@@ -1,0 +1,18 @@
+# Firmware
+peripheral_firmware/build/
+*.uf2
+*.hex
+*.elf
+*.map
+.west/
+
+# Android
+centralBLEAndroid/build/
+centralBLEAndroid/app/build/
+centralBLEAndroid/.gradle/
+centralBLEAndroid/local.properties
+.idea/
+*.iml
+
+# macOS
+.DS_Store
