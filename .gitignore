@@ -1,4 +1,11 @@
-# Firmware
+# editors
+*.swp
+*~
+.idea/
+*.iml
+.vscode
+
+# firmware
 peripheral_firmware/build/
 *.uf2
 *.hex
@@ -6,13 +13,11 @@ peripheral_firmware/build/
 *.map
 .west/
 
-# Android
+# android
 centralBLEAndroid/build/
 centralBLEAndroid/app/build/
 centralBLEAndroid/.gradle/
 centralBLEAndroid/local.properties
-.idea/
-*.iml
 
-# macOS
+# macos
 .DS_Store
