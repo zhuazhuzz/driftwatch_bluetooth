@@ -15,6 +15,8 @@ project(peripheral_lbs)
 # NORDIC SDK APP START
 target_sources(app PRIVATE
   src/main.c
+  src/lbs.c
+  src/imu.c
 )
 
 # NORDIC SDK APP END

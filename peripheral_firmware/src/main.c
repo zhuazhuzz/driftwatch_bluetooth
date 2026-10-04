@@ -20,7 +20,8 @@
 #include <zephyr/bluetooth/uuid.h>
 #include <zephyr/bluetooth/gatt.h>
 
-#include <bluetooth/services/lbs.h>
+#include "lbs.h"
+#include "imu.h"
 
 #include <zephyr/settings/settings.h>
 
@@ -240,6 +241,11 @@ int main(void)
 		}
 	}
 
+	err = imu_init();
+	if (err) {
+		printk("IMU init failed (err %d)\n", err);
+	}
+
 	err = bt_enable(NULL);
 	if (err) {
 		printk("Bluetooth init failed (err %d)\n", err);
@@ -262,7 +268,15 @@ int main(void)
 	advertising_start();
 
 	for (;;) {
+		struct imu_sample s;
+
 		dk_set_led(RUN_STATUS_LED, (++blink_status) % 2);
+
+		if (imu_read(&s) == 0) {
+			printk("imu t=%u a=%d,%d,%d g=%d,%d,%d\n", s.t_ms,
+			       s.ax, s.ay, s.az, s.gx, s.gy, s.gz);
+		}
+
 		k_sleep(K_MSEC(RUN_LED_BLINK_INTERVAL));
 	}
 }
