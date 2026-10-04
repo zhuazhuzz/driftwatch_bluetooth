@@ -1,0 +1,9 @@
+/ {
+	lsm6ds3tr_c_en: lsm6ds3tr-c-en {
+		status = "okay";
+	};
+};
+
+&lsm6ds3tr_c {
+	zephyr,deferred-init;
+};
